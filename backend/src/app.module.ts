@@ -26,7 +26,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
         console.log('ENV DB_PORT:', process.env.DB_PORT); // стандартный способ
-console.log('ConfigService DB_HOST:', configService.get('DB_HOST'));
+        console.log('ConfigService DB_HOST:', configService.get('DB_HOST'));
+        console.log('ConfigService POSTGRES_DB:', configService.get('POSTGRES_DB'));
+        console.log('ConfigService POSTGRES_USER:', configService.get('POSTGRES_USER'));
+        console.log('ConfigService POSTGRES_PASSWORD:', configService.get('POSTGRES_PASSWORD'));
+
         return{
         type: 'postgres',
         host: configService.get('DB_HOST'),
